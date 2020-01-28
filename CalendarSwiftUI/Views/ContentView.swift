@@ -14,19 +14,22 @@ struct ContentView: View {
     
     
     var body: some View {
-        
-        ScrollView(.horizontal, showsIndicators: false, content: {
-            HStack(spacing: 10) {
-                ForEach(dateModelController.listOfValidDates, id: \.self) { date in
-                    GridView(date: date).onTapGesture {
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack(spacing: 10) {
+                    ForEach(dateModelController.listOfValidDates, id: \.self) { date in
+                        GridView(date: date).onTapGesture {
+                            
+                            self.dateModelController.toggleIsSelected(date: date)
+                        }
                         
-                        self.dateModelController.toggleIsSelected(date: date)
                     }
+                    
                 }
                 
-            }
-            
-        })
+            })
+            Spacer()
+        }.padding().padding(.top, 30)
         
     }
     
