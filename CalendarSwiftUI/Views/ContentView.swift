@@ -15,6 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Text("Please choose a delivery date.").font(.title).bold()
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 10) {
                     ForEach(dateModelController.listOfValidDates, id: \.self) { date in
@@ -28,11 +29,14 @@ struct ContentView: View {
                 }
                 
             })
+            HStack {
+                Text("Your sheduled delivery date is: ")
+                Text("\(self.dateModelController.selectedDate)").foregroundColor(.red).bold()
+            }.padding(.top, 20)
             Spacer()
         }.padding().padding(.top, 30)
         
     }
-    
 }
 
 

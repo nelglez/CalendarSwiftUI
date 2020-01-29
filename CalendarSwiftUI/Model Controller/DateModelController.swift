@@ -10,6 +10,7 @@ import Foundation
 
 class DateModelController: ObservableObject {
     @Published private(set) var listOfValidDates: [DateModel] = []
+    @Published private(set) var selectedDate = ""
     
     init() {
         getDates()
@@ -17,9 +18,10 @@ class DateModelController: ObservableObject {
     
     func toggleIsSelected(date: DateModel) {
         guard let oldIndex = self.listOfValidDates.firstIndex(where: {$0.isSelected}) else { return }
-        self.listOfValidDates[oldIndex].isSelected = false
+        listOfValidDates[oldIndex].isSelected = false
         guard let index = self.listOfValidDates.firstIndex(of: date) else { return }
-        self.listOfValidDates[index].isSelected.toggle()
+        listOfValidDates[index].isSelected.toggle()
+        selectedDate = listOfValidDates[index].monthAsString + " " + "\(listOfValidDates[index].day)"
     }
     
     private func getDates() {
@@ -51,6 +53,9 @@ class DateModelController: ObservableObject {
             if (day == Calendar.current.component(.day, from: Date()) && month == dateFormatter.string(from: Date())) {
                 objectToAddInDate.isSelected = true
             }
+            let todayDate = Calendar.current.component(.day, from: Date())
+            let todayMonth = dateFormatter.string(from: Date())
+            self.selectedDate = todayMonth + " " + "\(todayDate)"
             self.listOfValidDates.append(objectToAddInDate)
         }
         

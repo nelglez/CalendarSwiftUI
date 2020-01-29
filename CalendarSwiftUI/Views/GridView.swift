@@ -15,7 +15,7 @@ struct GridView: View {
     var body: some View {
         
         ZStack {
-            Rectangle().fill(Color.white).cornerRadius(10).shadow(color: date.isSelected ? .red :.blue, radius: 5, x: 1, y: 1).frame(width: 150, height: 150)
+            Rectangle().fill(Color.white).cornerRadius(10).shadow(color: date.isSelected ? .red :.blue, radius: 5, x: 1, y: 1).frame(width: 116, height: 116)
             VStack {
                 
                 Text(self.date.monthAsString).font(.title)
@@ -23,6 +23,8 @@ struct GridView: View {
                 }
         
         }.padding(2)
+        
+        
     }
     
 }
