@@ -30,7 +30,7 @@ struct ContentView: View {
                 
             })
             HStack {
-                Text("Your sheduled delivery date is: ")
+                Text("Your scheduled delivery date is: ")
                 Text("\(self.dateModelController.selectedDate)").foregroundColor(.red).bold()
             }.padding(.top, 20)
             Spacer()

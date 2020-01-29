@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct GridView: View {
-
+    
     var date: DateModel
     
     var body: some View {
@@ -20,8 +20,8 @@ struct GridView: View {
                 
                 Text(self.date.monthAsString).font(.title)
                 Text("\(self.date.day)").font(.title)
-                }
-        
+            }
+            
         }.padding(2)
         
         
